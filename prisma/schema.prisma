@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Skill {
+  id        Int            @id @default(autoincrement())
+  name      String         @unique
+  iconUrl   String
+  category  String
+  projects  ProjectSkill[]
+  createdAt DateTime       @default(now())
+}
+
+model Project {
+  id           Int            @id @default(autoincrement())
+  title        String
+  slug         String         @unique
+  description  String
+  details      String
+  highlights   String?
+  challenges   String?
+  imageUrl     String?
+  githubUrl    String?
+  demoUrl      String?
+  status       String         @default("completed")
+  featured     Boolean        @default(false)
+  displayOrder Int            @default(0)
+  skills       ProjectSkill[]
+  images       ProjectImage[]
+  createdAt    DateTime       @default(now())
+}
+
+model ProjectSkill {
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId Int
+  skill     Skill   @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  skillId   Int
+
+  @@id([projectId, skillId])
+}
+
+model ProjectImage {
+  id        Int      @id @default(autoincrement())
+  url       String
+  alt       String?
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId Int
+  createdAt DateTime @default(now())
+}
+
+model SiteImage {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  url       String
+  alt       String?
+  createdAt DateTime @default(now())
+}
+
+model AboutImage {
+  id        Int      @id @default(autoincrement())
+  url       String
+  alt       String?
+  createdAt DateTime @default(now())
+}
