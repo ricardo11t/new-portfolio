@@ -47,7 +47,6 @@ export default function SkillGlobe({ skills }: SkillGlobeProps) {
           outlineColour: "#0000",
           maxSpeed: 0.04,
           minSpeed: 0.02,
-          radius: 200,
           dragControl: true,
         }}
 

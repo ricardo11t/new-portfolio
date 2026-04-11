@@ -5,6 +5,7 @@ import AboutGallery from "./AboutGallery";
 
 type AboutImageItem = {
   id: number;
+  createdAt: Date;
   url: string;
   alt: string | null;
 };
