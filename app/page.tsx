@@ -6,6 +6,8 @@ import ProjectsSection from "./components/ProjectsSection";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const [skills, projects, aboutImages] = await Promise.all([
     prisma.skill.findMany({

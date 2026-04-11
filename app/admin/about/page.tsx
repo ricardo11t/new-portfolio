@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import AboutImageManager from "./AboutImageManager";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminAbout() {
   const images = await prisma.aboutImage.findMany({
     orderBy: { createdAt: 'desc' }

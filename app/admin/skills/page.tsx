@@ -2,6 +2,8 @@ import { prisma } from "@/lib/prisma";
 import { createSkill, deleteSkill } from "../crud-actions";
 import { Trash2 } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminSkills() {
   const skills = await prisma.skill.findMany({ orderBy: { category: "asc" } });
 

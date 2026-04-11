@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import ProjectForm from "../ProjectForm";
 
+export const dynamic = "force-dynamic";
+
 export default async function NewProjectPage() {
   const allSkills = await prisma.skill.findMany();
 

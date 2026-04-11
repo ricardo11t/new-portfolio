@@ -4,8 +4,17 @@ import { ImagePlus, Plus, Edit2 } from "lucide-react";
 import { deleteProject } from "../crud-actions";
 import { DeleteProjectButton } from "./DeleteProjectButton";
 
+export const dynamic = "force-dynamic";
+
+type ProjectWithImages = {
+  id: number;
+  title: string;
+  status: string;
+  images: { id: number }[];
+};
+
 export default async function AdminProjects() {
-  const projects = await prisma.project.findMany({ 
+  const projects: ProjectWithImages[] = await prisma.project.findMany({ 
     orderBy: { displayOrder: "asc" },
     include: { images: true }
   });
