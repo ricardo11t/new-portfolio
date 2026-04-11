@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { createProject, updateProject } from "../../crud-actions";
+import { createProject, updateProject } from "../crud-actions";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";

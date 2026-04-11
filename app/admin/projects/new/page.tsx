@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import ProjectForm from "./ProjectForm";
+import ProjectForm from "../ProjectForm";
 
 export default async function NewProjectPage() {
   const allSkills = await prisma.skill.findMany();

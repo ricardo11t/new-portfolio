@@ -1,9 +1,14 @@
 import { prisma } from "@/lib/prisma";
-import ProjectForm from "../ProjectForm";
+import ProjectForm from "../../ProjectForm";
 import { notFound } from "next/navigation";
 
-export default async function EditProjectPage({ params }: { params: { id: string } }) {
-  const projectId = parseInt(await Promise.resolve(params.id));
+export default async function EditProjectPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const projectId = parseInt(resolvedParams.id, 10);
+
+  if (Number.isNaN(projectId)) {
+    notFound();
+  }
   
   const project = await prisma.project.findUnique({
     where: { id: projectId },

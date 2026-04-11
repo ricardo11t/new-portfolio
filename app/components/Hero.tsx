@@ -121,7 +121,7 @@ export default function Hero() {
         </h1>
 
         <p className={styles.subtitle}>
-          Criando soluções web modernas com React, Node.js e TypeScript.
+          Criando soluções web modernas usando principalmente TypeScript com frameworks como Next.js e NestJS.
           Apaixonado por código limpo, performance e experiências incríveis.
         </p>
 

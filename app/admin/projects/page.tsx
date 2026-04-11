@@ -1,7 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
-import { ImagePlus, Settings2, Plus, Edit2, Trash2 } from "lucide-react";
+import { ImagePlus, Plus, Edit2 } from "lucide-react";
 import { deleteProject } from "../crud-actions";
+import { DeleteProjectButton } from "./DeleteProjectButton";
 
 export default async function AdminProjects() {
   const projects = await prisma.project.findMany({ 
@@ -44,10 +45,7 @@ export default async function AdminProjects() {
                 Editar
               </Link>
               <form action={deleteProject.bind(null, p.id)} style={{ width: "100%" }}>
-                <button type="submit" className="btn btn-ghost" style={{ width: "100%", justifyContent: "center", fontSize: "0.875rem", padding: "8px 12px", color: "red" }} onClick={(e) => { if(!confirm("Tem certeza que deseja apagar o projeto inteiro?")) e.preventDefault() }}>
-                  <Trash2 size={16} />
-                  Apagar Projeto
-                </button>
+                <DeleteProjectButton />
               </form>
             </div>
           </div>

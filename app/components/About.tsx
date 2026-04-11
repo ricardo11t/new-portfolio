@@ -1,13 +1,18 @@
 import ScrollReveal from "./ScrollReveal";
 import { Globe, Database, Monitor, Code2 } from "lucide-react";
 import styles from "./About.module.css";
-import { AboutImage } from "@prisma/client";
 import AboutGallery from "./AboutGallery";
 
+type AboutImageItem = {
+  id: number;
+  url: string;
+  alt: string | null;
+};
+
 const STATS = [
+  { label: "Experiência", value: "2+ anos" },
   { label: "Projetos", value: "10+" },
   { label: "Tecnologias", value: "15+" },
-  { label: "Experiência", value: "2+ anos" },
 ];
 
 const AREAS = [
@@ -17,7 +22,7 @@ const AREAS = [
   { icon: Code2, label: "APIs", color: "#f59e0b" },
 ];
 
-export default function About({ images = [] }: { images?: AboutImage[] }) {
+export default function About({ images = [] }: { images?: AboutImageItem[] }) {
   return (
     <section id="about" className={styles.section}>
       <div className="container">
@@ -30,14 +35,13 @@ export default function About({ images = [] }: { images?: AboutImage[] }) {
           </p>
         </ScrollReveal>
 
-        <AboutGallery images={images} />
-
         <div className={styles.grid}>
-          <ScrollReveal className={styles.textCol}>
+          <ScrollReveal className={styles.textCol} delay={120}>
             <p className={styles.paragraph}>
-              Tenho experiência com <strong>React</strong>,{" "}
-              <strong>Node.js</strong>, <strong>TypeScript</strong> e bancos de
-              dados relacionais. Gosto de criar soluções eficientes e
+              Tenho experiência com frameworks como <strong>Next.js</strong>,{" "}
+              <strong>NestJS</strong>, <strong>Spring Boot</strong>, linguagens como <strong>TypeScript</strong>, {" "} 
+              <strong>Java</strong>, <strong>Python</strong> e bancos de
+              dados relacionais como <strong>PostgreSQL</strong> e <strong>MySQL</strong>. Gosto de criar soluções eficientes e
               escaláveis, sempre focando na experiência do usuário.
             </p>
             <p className={styles.paragraph}>
@@ -61,14 +65,18 @@ export default function About({ images = [] }: { images?: AboutImage[] }) {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal className={styles.statsCol} delay={200}>
-            <div className={styles.statsGrid}>
-              {STATS.map((stat) => (
-                <div key={stat.label} className={styles.statCard}>
-                  <span className={styles.statValue}>{stat.value}</span>
-                  <span className={styles.statLabel}>{stat.label}</span>
-                </div>
-              ))}
+          <ScrollReveal className={styles.rightCol} delay={200}>
+            <AboutGallery images={images} />
+
+            <div className={styles.statsSection}>
+              <div className={styles.statsGrid}>
+                {STATS.map((stat) => (
+                  <div key={stat.label} className={styles.statCard}>
+                    <span className={styles.statValue}>{stat.value}</span>
+                    <span className={styles.statLabel}>{stat.label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </ScrollReveal>
         </div>

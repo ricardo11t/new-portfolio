@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { addAboutImage, deleteAboutImage } from "../../crud-actions";
+import { addAboutImage, deleteAboutImage } from "../crud-actions";
 import { Trash2, UploadCloud, Loader2 } from "lucide-react";
 import { v4 as uuidv4 } from "uuid";
 

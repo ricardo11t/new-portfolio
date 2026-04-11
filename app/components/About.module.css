@@ -6,9 +6,9 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  max-width: 1000px;
+  gap: 48px;
+  align-items: start;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -16,6 +16,15 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.statsSection {
+  margin-top: 12px;
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
 }
 
 .paragraph {
@@ -54,17 +63,11 @@
   background: var(--bg-tertiary);
 }
 
-.statsCol {
-  display: flex;
-  justify-content: center;
-}
-
 .statsGrid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   width: 100%;
-  max-width: 300px;
 }
 
 .statCard {
@@ -86,7 +89,7 @@
 }
 
 .statValue {
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 800;
   background: var(--accent-gradient);
   -webkit-background-clip: text;
@@ -112,12 +115,10 @@
   }
 
   .statsGrid {
-    flex-direction: row;
-    max-width: 100%;
+    gap: 12px;
   }
 
   .statCard {
-    flex: 1;
     padding: 20px 16px;
   }
 
