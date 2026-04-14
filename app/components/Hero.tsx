@@ -130,7 +130,7 @@ export default function Hero() {
             Ver Projetos
           </button>
           <a
-            href="/Curriculo_Joao_Ricardo_Holanda_Lima.pdf"
+            href="/Currículo - João Ricardo Holanda Lima.pdf"
             download
             className="btn btn-outline"
           >
