@@ -15,7 +15,7 @@ export const dictionaries: Record<Locale, Dict> = {
     "hero.user": "ricardo@observatório",
     "hero.cmd": "whoami",
     "hero.tagline":
-      "Desenvolvedor full stack em Fortaleza, CE. Arquiteto coisas em TypeScript com NestJS e Next.js, encho buracos com n8n e IA, e levo tudo até a nuvem (AWS, Docker, Supabase) sem perder o humor nem o SLA.",
+      "Desenvolvedor full stack em Fortaleza, CE. Foco em TypeScript, NestJS e Next.js, automação com n8n, integrações e recursos de IA, com deploy e operação em AWS, Docker e Supabase.",
     "hero.stackTitle": "~/stack.json",
     "hero.clockTitle": "clock.app",
     "hero.tz": "Fortaleza — BRT",
@@ -23,10 +23,13 @@ export const dictionaries: Record<Locale, Dict> = {
     "hero.nowTitle": "now.md",
     "hero.nowMeta": "editado recentemente",
     "hero.nowHead": "now",
-    "hero.now1": "na Case: sistemas web full stack (Nest + Next) pra vários clientes ao mesmo tempo — multitarefa com estilo",
-    "hero.now2": "automações com n8n: menos clique, mais pipa no céu (meta: -60% trabalho chato)",
-    "hero.now3": "projeto Vendor: agentes de IA em voz — o microfone escuta, o backend pensa, eu só reviso o diff",
-    "hero.now4": "IFCE Telemática (2025–2028) + inglês fluente + espanhol básico — aberto a CLT que valorize código e piada seca",
+    "hero.now1":
+      "Case Agência Digital: desenvolvimento full stack (NestJS e Next.js) para múltiplos clientes, com entregas em produção.",
+    "hero.now2": "Automação de processos com n8n, reduzindo trabalho manual e repetitivo.",
+    "hero.now3":
+      "Projeto Vendor: atendimento com agentes de IA e voz, backend assíncrono, tempo real e integrações externas.",
+    "hero.now4":
+      "Graduação em Telemática no IFCE (2025–2028); curso Geração Tech 2.0 (192 h). Inglês avançado e espanhol básico. Aberto a oportunidades em regime CLT e PJ.",
     "hero.skyHint": "arraste o céu para explorar",
     "hero.asciiLine1": "Ctrl+K para comandos",
     "hero.asciiLine2": "tente: theme: light | lang: en",
@@ -35,8 +38,9 @@ export const dictionaries: Record<Locale, Dict> = {
     "atlas.counterSuffix": "estrelas selecionadas",
     "atlas.title1": "Cada projeto é",
     "atlas.titleEm": "uma estrela",
-    "atlas.title2": "que eu calibrei manualmente.",
-    "atlas.scrollHint": "arraste ou",
+    "atlas.title2": "cada um com escopo, stack e entrega bem definidos.",
+    "atlas.scrollHint": "arraste o carrossel ou use as",
+    "atlas.detailsCta": "Ver detalhes",
     "atlas.emptyTag": "VAZIO",
     "atlas.emptyLbl": "chart.00 — seed",
     "atlas.emptyCode": "/admin/projects/new",
@@ -50,6 +54,24 @@ export const dictionaries: Record<Locale, Dict> = {
     "atlas.statusHere": "você está aqui",
     "atlas.vizLbl": "orbit",
 
+    "project.back": "← Início",
+    "project.meta": "projeto",
+    "project.sectionDetails": "Detalhes",
+    "project.sectionHighlights": "Destaques",
+    "project.sectionChallenges": "Desafios",
+    "project.sectionStack": "Stack",
+    "project.sectionGallery": "Imagens",
+    "project.demo": "Demo",
+    "project.code": "Código",
+    "project.demoLive": "Demo ao vivo",
+    "project.demoOpenTab": "Abrir em nova aba",
+    "project.demoEmbedNote":
+      "Se a área ficar em branco, o site pode bloquear incorporação em iframe (X-Frame-Options). Use o link acima ou “Demo”.",
+    "project.galleryZoom": "Ampliar imagem",
+    "project.lightboxClose": "Fechar",
+    "project.lightboxPrev": "Imagem anterior",
+    "project.lightboxNext": "Próxima imagem",
+
     "log.k": "III — registros do observador",
     "log.h1a": "Uma breve",
     "log.h1b": "biografia,",
@@ -62,32 +84,33 @@ export const dictionaries: Record<Locale, Dict> = {
     "log.tz": "TZ",
     "log.tzVal": "America/Fortaleza",
     "log.uptime": "UPTIME",
-    "log.uptimeVal": "22y+ (debugando desde criança)",
+    "log.uptimeVal": "anos de aprendizado e prática em tecnologia",
 
     "log.e1d": "2025.12",
-    "log.e1t": "Case — modo produção",
+    "log.e1t": "Case Agência Digital",
     "log.e1p":
-      "Entrei na Case Agência Digital: TypeScript, NestJS, Next.js, deploy em AWS/VPS com Docker. n8n cortando trabalho manual como se fosse Ctrl+K na vida real.",
+      "Desenvolvimento com TypeScript, NestJS e Next.js; deploy em AWS/VPS com Docker. Uso de n8n para automação de fluxos operacionais e redução de trabalho manual.",
 
     "log.e2d": "2025.08",
-    "log.e2t": "Freelance — SaaS sem medo",
+    "log.e2t": "Freelance — SaaS e sistemas de gestão",
     "log.e2p":
-      "ERP, estoque, POS: do zero até produção com Nest + Prisma + Postgres e front em Next.js. Supabase acelerou entrega ~40% — e meu sono acompanhou a curva.",
+      "ERP, estoque e POS: da concepção à produção com NestJS, Prisma, PostgreSQL e front-end em Next.js. Uso de Supabase para acelerar entregas (cerca de 40% em projetos com perfil adequado).",
 
     "log.e3d": "2025",
-    "log.e3t": "Vendor — voz + IA",
-    "log.e3pBefore": "SaaS de atendimento com agentes de IA e voz. Nest assíncrono, tempo real, integrações externas. Se der",
-    "log.e3pAfter": ", eu abro o trace e um café.",
+    "log.e3t": "Vendor — voz e IA",
+    "log.e3pBefore":
+      "SaaS de atendimento com agentes de IA e voz: NestJS assíncrono, comunicação em tempo real e integrações externas. Em erros ou instabilidade (por exemplo, HTTP ",
+    "log.e3pAfter": "), priorizo análise de logs, rastreamento e correção com foco em estabilidade.",
 
     "log.e4d": "2025",
     "log.e4t": "Calculadora de risco PJ",
     "log.e4p":
-      "Next.js + TS: análise de custo/risco com PDF automático. Spoiler: o maior risco continua sendo scope creep.",
+      "Aplicação em Next.js e TypeScript para análise de custo e risco na contratação como PJ, com geração automática de relatórios em PDF.",
 
     "log.e5d": "agora",
-    "log.e5t": "Próximo nível",
+    "log.e5t": "Formação e objetivos",
     "log.e5p":
-      "IFCE Telemática (2025–2028), Geração Tech 2.0 (192h). Inglês fluente, espanhol básico. Quero time que goste de documentação, testes e perguntar por quê.",
+      "IFCE Telemática (2025–2028); Geração Tech 2.0 (192 h). Inglês avançado e espanhol básico. Busco equipes com cultura de documentação, testes e revisão de requisitos.",
 
     "contact.h2a": "Há",
     "contact.h2b": "sinal",
@@ -103,7 +126,7 @@ export const dictionaries: Record<Locale, Dict> = {
     "contact.linkedin": "linkedin:",
     "contact.phone": "fone:",
     "contact.langs": "idiomas:",
-    "contact.langsVal": "EN fluente · ES básico",
+    "contact.langsVal": "inglês avançado · espanhol básico",
     "contact.status": "status:",
     "contact.statusVal": "disponível para oportunidades",
     "contact.cvHint": "currículos (PDF):",
@@ -115,7 +138,7 @@ export const dictionaries: Record<Locale, Dict> = {
 
     "footer.copy": "© 2026 ricardo holanda · fortaleza/br",
     "footer.search": "para buscar",
-    "footer.build": "build v3.1 — observatório + terminal",
+    "footer.build": "",
 
     "cmd.scrollProjects": "ir para projetos",
     "cmd.scrollLog": "ir para registros (bio)",
@@ -159,7 +182,7 @@ export const dictionaries: Record<Locale, Dict> = {
     "hero.user": "ricardo@observatory",
     "hero.cmd": "whoami",
     "hero.tagline":
-      "Full stack developer in Fortaleza, Brazil. I ship TypeScript systems with NestJS and Next.js, wire AI + n8n automations, and push them to the cloud (AWS, Docker, Supabase) — uptime serious, jokes included.",
+      "Full stack developer in Fortaleza, Brazil. I work with TypeScript, NestJS, and Next.js, workflow automation with n8n, integrations and AI-related features, with deployment and operations on AWS, Docker, and Supabase.",
     "hero.stackTitle": "~/stack.json",
     "hero.clockTitle": "clock.app",
     "hero.tz": "Fortaleza — BRT",
@@ -167,10 +190,13 @@ export const dictionaries: Record<Locale, Dict> = {
     "hero.nowTitle": "now.md",
     "hero.nowMeta": "recently edited",
     "hero.nowHead": "now",
-    "hero.now1": "at Case: multi-client full stack (Nest + Next) — context switching is my cardio",
-    "hero.now2": "n8n automations: fewer clicks, more sky time (goal: -60% boring work)",
-    "hero.now3": "Vendor: AI voice agents — the mic listens, the backend thinks, I review the diff",
-    "hero.now4": "IFCE Telematics (2025–2028) + fluent English + basic Spanish — open to teams that care about tests and docs",
+    "hero.now1":
+      "Case Digital Agency: full stack development (NestJS and Next.js) for multiple clients, with production releases.",
+    "hero.now2": "Process automation with n8n to reduce manual, repetitive operational work.",
+    "hero.now3":
+      "Vendor project: customer service with AI voice agents, asynchronous backend, real-time communication, and external integrations.",
+    "hero.now4":
+      "Telematics degree at IFCE (2025–2028); Geração Tech 2.0 (192 h). Advanced English and basic Spanish. Open to CLT and PJ opportunities.",
     "hero.skyHint": "drag the sky to explore",
     "hero.asciiLine1": "Ctrl+K for commands",
     "hero.asciiLine2": "try: theme: light | lang: pt",
@@ -179,8 +205,9 @@ export const dictionaries: Record<Locale, Dict> = {
     "atlas.counterSuffix": "stars selected",
     "atlas.title1": "Each project is",
     "atlas.titleEm": "a star",
-    "atlas.title2": "I tuned by hand.",
-    "atlas.scrollHint": "drag or",
+    "atlas.title2": "each with clear scope, stack, and delivery.",
+    "atlas.scrollHint": "drag the carousel or use",
+    "atlas.detailsCta": "View details",
     "atlas.emptyTag": "EMPTY",
     "atlas.emptyLbl": "chart.00 — seed",
     "atlas.emptyCode": "/admin/projects/new",
@@ -194,6 +221,24 @@ export const dictionaries: Record<Locale, Dict> = {
     "atlas.statusHere": "you are here",
     "atlas.vizLbl": "orbit",
 
+    "project.back": "← Home",
+    "project.meta": "project",
+    "project.sectionDetails": "Details",
+    "project.sectionHighlights": "Highlights",
+    "project.sectionChallenges": "Challenges",
+    "project.sectionStack": "Stack",
+    "project.sectionGallery": "Images",
+    "project.demo": "Demo",
+    "project.code": "Source",
+    "project.demoLive": "Live demo",
+    "project.demoOpenTab": "Open in new tab",
+    "project.demoEmbedNote":
+      "If the frame stays blank, the site may block embedding (X-Frame-Options). Use the link above or “Demo”.",
+    "project.galleryZoom": "Enlarge image",
+    "project.lightboxClose": "Close",
+    "project.lightboxPrev": "Previous image",
+    "project.lightboxNext": "Next image",
+
     "log.k": "III — observer logs",
     "log.h1a": "A short",
     "log.h1b": "biography,",
@@ -206,32 +251,33 @@ export const dictionaries: Record<Locale, Dict> = {
     "log.tz": "TZ",
     "log.tzVal": "America/Fortaleza",
     "log.uptime": "UPTIME",
-    "log.uptimeVal": "22y+ (shipping since kid mode)",
+    "log.uptimeVal": "years of continuous learning and hands-on practice",
 
     "log.e1d": "2025.12",
-    "log.e1t": "Case — production mode",
+    "log.e1t": "Case Digital Agency",
     "log.e1p":
-      "Joined Case Digital Agency: TypeScript, NestJS, Next.js, AWS/VPS with Docker. n8n deleting manual work like Ctrl+K for real life.",
+      "Development with TypeScript, NestJS, and Next.js; deployment on AWS/VPS with Docker. n8n for workflow automation and less manual operational work.",
 
     "log.e2d": "2025.08",
-    "log.e2t": "Freelance — SaaS fearless",
+    "log.e2t": "Freelance — SaaS and business systems",
     "log.e2p":
-      "ERP, inventory, POS: zero to prod with Nest + Prisma + Postgres and Next.js front. Supabase sped delivery ~40% — sleep curve correlated.",
+      "ERP, inventory, and POS: from design to production with NestJS, Prisma, PostgreSQL, and a Next.js front end. Supabase used to speed delivery (around 40% where the stack fit the project).",
 
     "log.e3d": "2025",
-    "log.e3t": "Vendor — voice + AI",
-    "log.e3pBefore": "SaaS for AI voice agents. Async Nest, realtime, external APIs. If a",
-    "log.e3pAfter": "shows up, I open traces and coffee.",
+    "log.e3t": "Vendor — voice and AI",
+    "log.e3pBefore":
+      "SaaS for AI voice customer service: asynchronous NestJS, real-time channels, and external integrations. On errors or instability (for example, HTTP ",
+    "log.e3pAfter": "), I prioritize log analysis, tracing, and fixes focused on stability.",
 
     "log.e4d": "2025",
     "log.e4t": "PJ risk calculator",
     "log.e4p":
-      "Next.js + TS: hiring cost/risk with auto PDF reports. Plot twist: biggest risk is still scope creep.",
+      "Next.js and TypeScript application to analyze cost and risk when hiring as an independent contractor (PJ), with automatic PDF reports.",
 
     "log.e5d": "now",
-    "log.e5t": "Next level",
+    "log.e5t": "Education and goals",
     "log.e5p":
-      "IFCE Telematics (2025–2028), Geração Tech 2.0 (192h). Fluent English, basic Spanish. I want teams that love docs, tests, and asking why.",
+      "IFCE Telematics (2025–2028); Geração Tech 2.0 (192 h). Advanced English and basic Spanish. I look for teams with documentation, testing, and clear requirements practices.",
 
     "contact.h2a": "There is",
     "contact.h2b": "signal",
@@ -247,7 +293,7 @@ export const dictionaries: Record<Locale, Dict> = {
     "contact.linkedin": "linkedin:",
     "contact.phone": "phone:",
     "contact.langs": "languages:",
-    "contact.langsVal": "EN fluent · ES basic",
+    "contact.langsVal": "English — advanced · Spanish — basic",
     "contact.status": "status:",
     "contact.statusVal": "open to opportunities",
     "contact.cvHint": "resumes (PDF):",
@@ -259,7 +305,7 @@ export const dictionaries: Record<Locale, Dict> = {
 
     "footer.copy": "© 2026 ricardo holanda · fortaleza/br",
     "footer.search": "to search",
-    "footer.build": "build v3.1 — observatory + terminal",
+    "footer.build": "",
 
     "cmd.scrollProjects": "go to projects",
     "cmd.scrollLog": "go to log (bio)",

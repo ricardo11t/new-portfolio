@@ -99,7 +99,7 @@ export function ObservatorioProviders({ children }: { children: ReactNode }) {
     return (
       <ObsCtx.Provider value={value}>
         <div className="obs-portfolio grain" data-obs-theme="dark" data-obs-locale="pt" suppressHydrationWarning>
-          {children}
+          <div className="obs-portfolio-surface">{children}</div>
         </div>
       </ObsCtx.Provider>
     );
@@ -108,7 +108,7 @@ export function ObservatorioProviders({ children }: { children: ReactNode }) {
   return (
     <ObsCtx.Provider value={value}>
       <div className="obs-portfolio grain" data-obs-theme={theme} data-obs-locale={locale}>
-        {children}
+        <div className="obs-portfolio-surface">{children}</div>
       </div>
     </ObsCtx.Provider>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import AtlasTrack from "./AtlasTrack";
 import { ChartViz } from "./chart-viz";
 import { useObservatorio } from "./ObservatorioProviders";
@@ -137,6 +138,9 @@ export default function ObservatorioAtlas({ projects }: { projects: AtlasProject
                       <span key={`${project.id}-${skill.name}`}>{skill.name}</span>
                     ))}
                   </div>
+                  <Link href={`/projeto/${project.slug}`} className="chart-details-link" data-hover>
+                    {t("atlas.detailsCta")}
+                  </Link>
                 </div>
               </article>
             );

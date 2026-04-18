@@ -270,7 +270,7 @@ export default function ObservatorioInteractions() {
     }
 
     const hoverSel =
-      "a, button, [data-hover], .chart, .menu-item, .cp-item, .w-stack, .w-now, .w-clock, h1 .glitch-hover";
+      "a, button, [data-hover], .chart, .menu-item, .cp-item, .w-stack, .w-now, .w-clock, h1 .glitch-hover, .pd-gallery-thumb, .pd-lightbox-nav, .pd-lightbox-close";
 
     function onOver(e: MouseEvent) {
       if ((e.target as HTMLElement).closest(hoverSel)) ring.classList.add("hover");
@@ -313,8 +313,11 @@ export default function ObservatorioInteractions() {
       if (e.key.toLowerCase() === seq[i].toLowerCase()) {
         i++;
         if (i === seq.length) {
-          document.body.style.transition = "filter 0.4s";
-          document.body.style.filter = "hue-rotate(160deg) saturate(1.3)";
+          const surface = document.querySelector(".obs-portfolio-surface");
+          if (surface instanceof HTMLElement) {
+            surface.style.transition = "filter 0.4s";
+            surface.style.filter = "hue-rotate(160deg) saturate(1.3)";
+          }
           showToast(t("toast.chaos"));
           i = 0;
         }
