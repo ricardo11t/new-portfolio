@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ThemeProvider from "./components/ThemeProvider";
-import Navbar from "./components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Ricardo Holanda | Desenvolvedor Fullstack",
+  title: "ricardo11t // observatório",
   description:
-    "Portfólio de Ricardo Holanda — Desenvolvedor Fullstack especializado em React, Node.js e TypeScript. Criando soluções web modernas, escaláveis e com experiência premium.",
+    "Portfólio de Ricardo Holanda — desenvolvedor fullstack em Fortaleza. TypeScript, Next.js, sistemas distribuídos.",
   keywords: [
     "Ricardo Holanda",
     "Desenvolvedor Fullstack",
@@ -34,10 +33,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" data-theme="dark" suppressHydrationWarning>
       <body>
-        <ThemeProvider>
-          <Navbar />
-          {children}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
