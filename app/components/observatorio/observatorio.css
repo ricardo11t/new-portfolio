@@ -32,6 +32,15 @@
   }
   .obs-portfolio, .obs-portfolio * { box-sizing: border-box; }
   .obs-portfolio * { margin: 0; padding: 0; }
+
+  /* Conteúdo que recebe filtro “konami”; cursor fica fora deste nó para não bugar com mix-blend */
+  .obs-portfolio-surface {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+  }
   
   
   .obs-portfolio a { color: inherit; text-decoration: none; }
@@ -416,6 +425,12 @@
     scrollbar-color: var(--fg-4) transparent;
     padding-bottom: 16px;
     border-top: 1px solid var(--fg-4);
+    cursor: grab;
+    touch-action: pan-y;
+  }
+  .atlas-track.atlas-track--dragging {
+    cursor: grabbing;
+    user-select: none;
   }
   .atlas-track::-webkit-scrollbar { height: 4px; }
   .atlas-track::-webkit-scrollbar-track { background: var(--bg-2); }
@@ -521,6 +536,22 @@
     transition: color 0.2s, border-color 0.2s;
   }
   .chart:hover .info .tags span { color: var(--fg-2); border-color: var(--fg-3); }
+
+  .chart .chart-details-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-dim);
+    padding-bottom: 2px;
+  }
+  .chart .chart-details-link:hover {
+    color: var(--accent-2);
+    border-color: var(--accent);
+  }
 
   /* ============ LOG / ABOUT ============ */
   .log {
@@ -803,8 +834,24 @@
       linear-gradient(90deg, rgba(20, 20, 22, 0.06) 1px, transparent 1px);
   }
 
+  .obs-portfolio[data-obs-theme="light"] .cursor-dot,
+  .obs-portfolio[data-obs-theme="light"] .cursor-ring {
+    mix-blend-mode: normal;
+  }
+  .obs-portfolio[data-obs-theme="light"] .cursor-dot {
+    background: var(--accent);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.95),
+      0 0 0 2px rgba(20, 20, 22, 0.12),
+      0 2px 14px rgba(0, 0, 0, 0.18);
+  }
+  .obs-portfolio[data-obs-theme="light"] .cursor-ring {
+    border-width: 2px;
+    border-color: oklch(0.42 0.19 24);
+  }
   .obs-portfolio[data-obs-theme="light"] .cursor-ring.hover {
-    border-color: var(--fg);
+    border-color: oklch(0.32 0.16 24);
+    border-width: 2px;
   }
 
   .obs-portfolio[data-obs-theme="light"] .console-box {
@@ -821,4 +868,314 @@
 
   .obs-portfolio[data-obs-theme="light"] .toast {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  /* ============ PROJECT DETAIL (/projeto/[slug]) ============ */
+  .obs-portfolio .project-detail-page {
+    flex: 1;
+    padding: 28px 48px 80px;
+    max-width: 880px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .obs-portfolio .project-detail-page .pd-back {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-dim);
+    display: inline-block;
+    margin-bottom: 28px;
+  }
+  .obs-portfolio .project-detail-page .pd-back:hover {
+    color: var(--accent-2);
+    border-color: var(--accent);
+  }
+  .obs-portfolio .project-detail-page .pd-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--fg-3);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .obs-portfolio .project-detail-page h1 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .obs-portfolio .project-detail-page .pd-status {
+    font-family: var(--mono);
+    font-size: 10px;
+    display: inline-block;
+    padding: 3px 10px;
+    border: 1px solid var(--fg-4);
+    color: var(--fg-3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .obs-portfolio .project-detail-page .pd-status.live {
+    color: var(--accent);
+    border-color: var(--accent-dim);
+    background: var(--accent-glow);
+  }
+  .obs-portfolio .project-detail-page .pd-status.done {
+    color: #7dc97d;
+    border-color: rgba(125, 201, 125, 0.35);
+    background: rgba(125, 201, 125, 0.08);
+  }
+  .obs-portfolio .project-detail-page .pd-lead {
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--fg-2);
+    margin-bottom: 36px;
+  }
+  .obs-portfolio .project-detail-page h2 {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    margin: 32px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--fg-4);
+  }
+  .obs-portfolio .project-detail-page .pd-body {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--fg-2);
+  }
+  .obs-portfolio .project-detail-page .pd-body p + p {
+    margin-top: 14px;
+  }
+  .obs-portfolio .project-detail-page .pd-highlights-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--fg-2);
+  }
+  .obs-portfolio .project-detail-page .pd-highlights-list li {
+    position: relative;
+    padding-left: 1.35em;
+    margin-bottom: 12px;
+  }
+  .obs-portfolio .project-detail-page .pd-highlights-list li:last-child {
+    margin-bottom: 0;
+  }
+  .obs-portfolio .project-detail-page .pd-highlights-list li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    color: var(--accent);
+    font-size: 0.95em;
+  }
+  .obs-portfolio .project-detail-page .pd-embed-open {
+    margin: 0 0 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+  .obs-portfolio .project-detail-page .pd-embed-open a {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-dim);
+  }
+  .obs-portfolio .project-detail-page .pd-embed-open a:hover {
+    color: var(--accent-2);
+    border-color: var(--accent);
+  }
+  .obs-portfolio .project-detail-page .pd-embed-wrap {
+    position: relative;
+    width: 100%;
+    border: 1px solid var(--fg-4);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--bg-2);
+    aspect-ratio: 16 / 10;
+    max-height: min(72vh, 760px);
+    min-height: 320px;
+  }
+  .obs-portfolio .project-detail-page .pd-embed-wrap iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: var(--bg);
+  }
+  .obs-portfolio .project-detail-page .pd-embed-note {
+    margin: 10px 0 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    line-height: 1.5;
+    color: var(--fg-3);
+    max-width: 52em;
+  }
+  .obs-portfolio .project-detail-page .pd-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .obs-portfolio .project-detail-page .pd-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent-dim);
+    letter-spacing: 0.06em;
+  }
+  .obs-portfolio .project-detail-page .pd-links a:hover {
+    color: var(--accent-2);
+    border-color: var(--accent);
+  }
+  .obs-portfolio .project-detail-page .pd-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .obs-portfolio .project-detail-page .pd-tags span {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 9px;
+    border: 1px solid var(--fg-4);
+    color: var(--fg-3);
+  }
+  .obs-portfolio .project-detail-page .pd-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: 18px;
+    margin-top: 12px;
+  }
+  .obs-portfolio .project-detail-page .pd-gallery-thumb {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 1px solid var(--fg-4);
+    background: var(--bg-2);
+    overflow: hidden;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .obs-portfolio .project-detail-page .pd-gallery-thumb:hover {
+    border-color: var(--accent-dim);
+    box-shadow: 0 0 0 1px var(--accent-glow);
+  }
+  .obs-portfolio .project-detail-page .pd-gallery-thumb figure {
+    margin: 0;
+    overflow: hidden;
+  }
+  .obs-portfolio .project-detail-page .pd-gallery-thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+  .obs-portfolio .project-detail-page .pd-gallery-thumb:hover img {
+    transform: scale(1.03);
+  }
+  .obs-portfolio .project-detail-page .pd-hero-img {
+    margin: 24px 0;
+    max-height: 480px;
+  }
+  .obs-portfolio .project-detail-page .pd-hero-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 480px;
+    object-fit: cover;
+  }
+  .obs-portfolio .project-detail-page .pd-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 11002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .obs-portfolio .project-detail-page .pd-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+  }
+  .obs-portfolio .project-detail-page .pd-lightbox-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: min(96vw, 1280px);
+    max-height: 92vh;
+    pointer-events: none;
+  }
+  .obs-portfolio .project-detail-page .pd-lightbox-inner > * {
+    pointer-events: auto;
+  }
+  .obs-portfolio .project-detail-page .pd-lightbox-imgwrap {
+    flex: 1;
+    min-width: 0;
+    max-height: 92vh;
+    border: 1px solid var(--fg-4);
+    background: var(--bg-2);
+    border-radius: 4px;
+    overflow: auto;
+  }
+  .obs-portfolio .project-detail-page .pd-lightbox-imgwrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 88vh;
+    object-fit: contain;
+  }
+  .obs-portfolio .project-detail-page .pd-lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 11004;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--fg-4);
+    background: var(--bg-2);
+    color: var(--fg);
+    font-size: 22px;
+    line-height: 1;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .obs-portfolio .project-detail-page .pd-lightbox-close:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .obs-portfolio .project-detail-page .pd-lightbox-nav {
+    flex-shrink: 0;
+    width: 44px;
+    height: 88px;
+    border: 1px solid var(--fg-4);
+    background: var(--bg-2);
+    color: var(--fg-2);
+    font-size: 28px;
+    line-height: 1;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .obs-portfolio .project-detail-page .pd-lightbox-nav:hover {
+    border-color: var(--accent);
+    color: var(--accent);
   }

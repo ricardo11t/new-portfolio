@@ -21,3 +21,13 @@ export async function getPortfolioData() {
 
   return { skills, projects, aboutImages };
 }
+
+export async function getProjectBySlug(slug: string) {
+  return prisma.project.findUnique({
+    where: { slug },
+    include: {
+      skills: { include: { skill: true } },
+      images: { orderBy: { createdAt: "asc" } },
+    },
+  });
+}
