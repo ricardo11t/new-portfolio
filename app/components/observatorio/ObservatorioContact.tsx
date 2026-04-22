@@ -67,7 +67,7 @@ export default function ObservatorioContact() {
           </div>
           <div className="output">
             {t("contact.phone")}{" "}
-            <a href={`tel:${PHONE_TEL}`}>{PHONE_DISPLAY}</a>
+            <a target="blank_" href={`https://wa.me/5585994348418?text=${encodeURIComponent("Olá, me interessei pelo seu trabalho, vim pelo seu portfólio.")}`}>{PHONE_DISPLAY}</a>
           </div>
           <div className="output">
             {t("contact.github")}{" "}
