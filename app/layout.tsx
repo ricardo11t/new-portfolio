@@ -3,7 +3,7 @@ import "./globals.css";
 import ThemeProvider from "./components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "ricardo11t // observatório",
+  title: "ricardo11t",
   description:
     "Portfólio de Ricardo Holanda — desenvolvedor fullstack em Fortaleza. TypeScript, Next.js, sistemas distribuídos.",
   keywords: [
